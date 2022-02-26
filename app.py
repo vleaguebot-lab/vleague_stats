@@ -20,6 +20,16 @@ def select_alg(df, jp_item, all_item, i):
     return df, select_item
 
 
+def metric_format(mean2, mean):
+    if pd.isna(mean2):
+        mean2f = '-'
+        meanf = '-'
+    else:
+        mean2f = mean2
+        meanf = (mean2-mean).round(2)
+    return mean2f, meanf
+
+
 st.title('Vリーグ成績公開サイト')
 columns = st.columns(4)
 columns[0].markdown('### *{}*'.format('by Vリーグbot'))
@@ -67,6 +77,9 @@ S_eff = (df_sum['サーブ得点']*100+df_sum['サーブ効果'] *
          25-df_sum['サーブ失点']*25)/df_sum['サーブ打数']
 R_succ = (df_sum['サーブレシーブ成功・優']*100+df_sum['サーブレシーブ成功・良']*50)/df_sum['受数']
 
+A_mean, BA_mean, BL_mean, S_eff, R_succ = A_mean.round(1), BA_mean.round(
+    1), BL_mean.round(2), S_eff.round(2), R_succ.round(2)
+
 st.markdown('### *{0} {1}*'.format(select_division, select_data))
 
 
@@ -78,10 +91,14 @@ if select_data == '月別成績':
 elif select_data == '日別成績':
     df, select_daily = select_alg(df, '試合日', '全ての日', 0)
 
+
 # チーム選択
 df, select_team = select_alg(df, 'チーム', '全チーム', 1)
 # 選手選択
 df, select_player = select_alg(df, '名前', '全選手', 2)
+
+# if select_team != '全チーム' and select_player == '全選手':
+#     BL_mean =
 
 # グラフ作成
 
@@ -96,26 +113,44 @@ S_eff2 = (df_sum['サーブ得点']*100+df_sum['サーブ効果'] *
           25-df_sum['サーブ失点']*25)/df_sum['サーブ打数']
 R_succ2 = (df_sum['サーブレシーブ成功・優']*100+df_sum['サーブレシーブ成功・良']*50)/df_sum['受数']
 
+if select_team != '全チーム' and select_player == '全選手':
+    BL_mean2 = df_sum['ブロック得点'] / max(df['出場数'])
+
+A_mean2, BA_mean2, BL_mean2, S_eff2, R_succ2 = A_mean2.round(
+    1), BA_mean2.round(1), BL_mean2.round(2), S_eff2.round(2), R_succ2.round(2)
+
+
+A_mean2f, A_meanf = metric_format(A_mean2, A_mean)
+BA_mean2f, BA_meanf = metric_format(BA_mean2, BA_mean)
+BL_mean2f, BL_meanf = metric_format(BL_mean2, BL_mean)
+S_eff2f, S_efff = metric_format(S_eff2, S_eff)
+R_succ2f, R_succf = metric_format(R_succ2, R_succ)
+
 
 columns = st.columns(5)
 if len_df1 > len_df2:
     st.markdown('##### *{}*'.format('全体平均との比較'))
-    columns[0].metric('アタック決定率', '{0:.1f}%'.format(
-        A_mean2), '{0:.1f}%'.format(A_mean2-A_mean))
-    columns[1].metric('バックアタック決定率', '{0:.1f}%'.format(
-        BA_mean2), '{0:.1f}%'.format(BA_mean2-BA_mean))
-    columns[2].metric('ブロックセット平均', '{0:.2f}'.format(
-        BL_mean2), '{0:.2f}'.format(BL_mean2-BL_mean))
-    columns[3].metric('サーブ効果率', '{0:.1f}%'.format(
-        S_eff2), '{0:.1f}%'.format(S_eff2-S_eff))
-    columns[4].metric('サーブレシーブ成功率', '{0:.1f}%'.format(
-        R_succ2), '{0:.1f}%'.format(R_succ2-R_succ))
+    columns[0].metric('アタック決定率', '{}%'.format(
+        A_mean2f), '{}%'.format(A_meanf))
+    columns[1].metric('バックアタック決定率', '{}%'.format(
+        BA_mean2f), '{}%'.format(BA_meanf))
+    if select_player == '全選手':
+        columns[2].metric('ブロック得点', '{}'.format(sum(df['ブロック得点'])))
+    else:
+        columns[2].metric('ブロックセット平均', '{}'.format(
+            BL_mean2f), '{}'.format(BL_meanf))
+    columns[3].metric('サーブ効果率', '{}%'.format(
+        S_eff2f), '{}%'.format(S_efff))
+    columns[4].metric('サーブレシーブ成功率', '{}%'.format(
+        R_succ2f), '{}%'.format(R_succf))
 
 ave = st.button('全体平均')
 if ave:
+    columns = st.columns(5)
     columns[0].metric('アタック決定率', '{0:.1f}%'.format(A_mean))
     columns[1].metric('バックアタック決定率', '{0:.1f}%'.format(BA_mean))
-    columns[2].metric('ブロックセット平均', '{0:.2f}'.format(BL_mean))
+    if select_player != '全選手':
+        columns[2].metric('ブロックセット平均', '{0:.2f}'.format(BL_mean))
     columns[3].metric('サーブ効果率', '{0:.1f}%'.format(S_eff))
     columns[4].metric('サーブレシーブ成功率', '{0:.1f}%'.format(R_succ))
 
