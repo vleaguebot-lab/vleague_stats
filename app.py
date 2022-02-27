@@ -54,10 +54,8 @@ link4 = '[Youtube](https://t.co/bG2kAHib4n)'
 columns = st.columns(4)
 columns[-2].markdown(link, unsafe_allow_html=True)
 columns[-1].markdown(link2, unsafe_allow_html=True)
-columns[-2].markdown(link3, unsafe_allow_html=True)
-columns[-1].markdown(link4, unsafe_allow_html=True)
 
-columns = st.columns(2)
+columns = st.sidebar.columns(2)
 # ディビジョン選択
 select_division = columns[0].selectbox(
     "ディビジョンを選択",
@@ -102,7 +100,7 @@ st.markdown('### *{0} {1}*'.format(select_division, select_data))
 
 
 # 月別成績のとき
-columns = st.columns(3)
+columns = st.sidebar.columns(2)
 if select_data == '月別成績':
     df, select_month = select_alg(df, '年月', '全ての月', 0)
 
@@ -113,10 +111,14 @@ elif select_data == '日別成績':
 # チーム選択
 df, select_team = select_alg(df, 'チーム', '全チーム', 1)
 # 選手選択
-df, select_player = select_alg(df, '名前', '全選手', 2)
+columns = st.sidebar.columns(2)
+df, select_player = select_alg(df, '名前', '全選手', 0)
 
-# if select_team != '全チーム' and select_player == '全選手':
-#     BL_mean =
+st.sidebar.write('Vリーグbotリンク')
+columns = st.sidebar.columns(2)
+columns[0].markdown(link3, unsafe_allow_html=True)
+columns[1].markdown(link4, unsafe_allow_html=True)
+
 
 # グラフ作成
 
@@ -190,22 +192,34 @@ chart_df = pd.DataFrame(
 #     ax.hist(arr, bins=20)
 
 # st.pyplot(fig)
-highlight = st.button('ハイライトオフ')
-if highlight:
-    st.dataframe(df)
+highlights = st.button('ハイライト')
+
+# メインスタッツ
+main_df = df
+
+if highlights:
+    st.dataframe(main_df.style.highlight_max(axis=0))
 else:
-    st.dataframe(df.style.highlight_max(axis=0))
+    st.dataframe(main_df)
 
-if len_df1 > len_df2:
-    columns = st.columns(3)
+all_stats = st.button('全記録')
+if all_stats:
+    if highlights:
+        st.dataframe(df.style.highlight_max(axis=0))
+    else:
+        st.dataframe(df)
 
-    columns[0].bar_chart(chart_df.iloc[:, 0], use_container_width=False)
-    columns[1].bar_chart(chart_df.iloc[:, 1], use_container_width=False)
-    columns[2].bar_chart(chart_df.iloc[:, 2], use_container_width=False)
-    columns[0].bar_chart(chart_df.iloc[:, 3], use_container_width=False)
-    columns[1].bar_chart(chart_df.iloc[:, 4], use_container_width=False)
 
-    columns[2].write('左側: リーグ全体平均')
-    columns[2].write('右側: 選択した選手・チームの成績')
+# if len_df1 > len_df2:
+#     columns = st.columns(3)
 
-    columns[2].dataframe(chart_df.T)
+#     columns[0].bar_chart(chart_df.iloc[:, 0], use_container_width=False)
+#     columns[1].bar_chart(chart_df.iloc[:, 1], use_container_width=False)
+#     columns[2].bar_chart(chart_df.iloc[:, 2], use_container_width=False)
+#     columns[0].bar_chart(chart_df.iloc[:, 3], use_container_width=False)
+#     columns[1].bar_chart(chart_df.iloc[:, 4], use_container_width=False)
+
+#     columns[2].write('左側: リーグ全体平均')
+#     columns[2].write('右側: 選択した選手・チームの成績')
+
+#     columns[2].dataframe(chart_df.T)
