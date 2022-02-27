@@ -1,5 +1,4 @@
 import os
-import glob
 import datetime
 
 from pygments import highlight
@@ -32,28 +31,6 @@ def metric_format(mean2, mean):
         meanf = (mean2-mean).round(2)
     return mean2f, meanf
 
-
-file = glob.glob('2021-22_regular/*/*')
-ft = os.path.getmtime(file[0])
-final_edit = datetime.datetime.fromtimestamp(ft)
-
-
-st.title('Vリーグ成績公開サイト')
-
-st.markdown('### {}'.format('by Vリーグbot'))
-# columns[1].markdown('{}'.format(file[0]))
-columns = st.columns(3)
-columns[-1].markdown('{}更新'.format(
-    final_edit.strftime('%Y年%m月%d日 %H:%M:%S')))
-
-link = '[Vリーグ公式TOP](https://www.vleague.jp/record)'
-link2 = '[公式記録・ランキング](https://www.vleague.jp/record)'
-link3 = '[Twitter](https://twitter.com/intent/follow?screen_name=Vleague_bot)'
-link4 = '[Youtube](https://t.co/bG2kAHib4n)'
-
-columns = st.columns(4)
-columns[-2].markdown(link, unsafe_allow_html=True)
-columns[-1].markdown(link2, unsafe_allow_html=True)
 
 columns = st.sidebar.columns(2)
 # ディビジョン選択
@@ -96,7 +73,29 @@ R_succ = (df_sum['サーブレシーブ成功・優']*100+df_sum['サーブレ�
 A_mean, BA_mean, BL_mean, S_eff, R_succ = A_mean.round(1), BA_mean.round(
     1), BL_mean.round(2), S_eff.round(2), R_succ.round(2)
 
-st.markdown('### *{0} {1}*'.format(select_division, select_data))
+ft = os.path.getmtime(file)
+final_edit = datetime.datetime.fromtimestamp(ft)
+
+
+st.title('Vリーグ成績公開サイト')
+
+st.markdown('### {}'.format('by Vリーグbot'))
+# columns[1].markdown('{}'.format(file[0]))
+columns = st.columns(3)
+columns[-1].markdown('{}更新'.format(
+    final_edit.strftime('%Y年%m月%d日 %H:%M:%S')))
+
+link = '[Vリーグ公式TOP](https://www.vleague.jp/record)'
+link2 = '[公式記録・ランキング](https://www.vleague.jp/record)'
+link3 = '[Twitter](https://twitter.com/intent/follow?screen_name=Vleague_bot)'
+link4 = '[Youtube](https://t.co/bG2kAHib4n)'
+
+columns = st.columns(4)
+columns[-2].markdown(link, unsafe_allow_html=True)
+columns[-1].markdown(link2, unsafe_allow_html=True)
+
+
+st.markdown('### {0} {1}'.format(select_division, select_data))
 
 
 # 月別成績のとき
@@ -113,6 +112,9 @@ df, select_team = select_alg(df, 'チーム', '全チーム', 1)
 # 選手選択
 columns = st.sidebar.columns(2)
 df, select_player = select_alg(df, '名前', '全選手', 0)
+
+if select_player != '全選手':
+    st.markdown('#### {} 選手の成績'.format(select_player))
 
 st.sidebar.write('Vリーグbotリンク')
 columns = st.sidebar.columns(2)
