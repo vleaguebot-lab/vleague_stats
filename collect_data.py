@@ -30,14 +30,17 @@ headers = {"User-Agent": "Mozilla/5.0"}
 
 id_dict = {'v1_m': '318', 'v1_w': '317',
            'v2_m': '320', 'v2_w': '319', 'v3_m': '321'}
+# id_dict = {'v2_w': '322'}
+
 division = input('ディビジョン選択: ')
 s_id = id_dict[division]
 
 s_round = "2021-22_regular"
+# s_round = "2021-22_finalstage"
 # os.chdir(s_round)
 
 # if not os.path.isdir(division):
-#     os.makedirs(division)
+# os.makedirs(division)
 
 
 sets = ['1', '2', '3', '4', '5']
