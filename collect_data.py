@@ -28,9 +28,11 @@ def stats_calc(df):
 
 headers = {"User-Agent": "Mozilla/5.0"}
 
+# レギュラーラウンド
 id_dict = {'v1_m': '318', 'v1_w': '317',
            'v2_m': '320', 'v2_w': '319', 'v3_m': '321'}
-# id_dict = {'v2_w': '322'}
+# id_dict = {'v2_w': '322'} # ファイナルステージ
+# id_dict = {'v2_m': ''}
 
 division = input('ディビジョン選択: ')
 s_id = id_dict[division]
