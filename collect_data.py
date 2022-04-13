@@ -29,16 +29,22 @@ def stats_calc(df):
 headers = {"User-Agent": "Mozilla/5.0"}
 
 # レギュラーラウンド
-id_dict = {'v1_m': '318', 'v1_w': '317',
-           'v2_m': '320', 'v2_w': '319', 'v3_m': '321'}
-# id_dict = {'v2_w': '322'} # ファイナルステージ
+# id_dict = {'v1_m': '318', 'v1_w': '317',
+#    'v2_m': '320', 'v2_w': '319', 'v3_m': '321'}
+# id_dict = {'v2_w': '322'}  # ファイナルステージ
 # id_dict = {'v2_m': ''}
+# id_dict = {'v1_m': '323', 'v1_w': '325'}  # ファイナル3
+id_dict = {'v1_m': '324', 'v1_w': '326'}
+# id_dict = {'v1_m': '329', 'v2_m': '330', 'v1_w': '328'}  # チャレンジマッチ
 
 division = input('ディビジョン選択: ')
 s_id = id_dict[division]
 
-s_round = "2021-22_regular"
+# s_round = "2021-22_regular"
 # s_round = "2021-22_finalstage"
+# s_round = "2021-22_final3"
+s_round = "2021-22_final"
+# s_round = "2021-22_challenge"
 # os.chdir(s_round)
 
 # if not os.path.isdir(division):
