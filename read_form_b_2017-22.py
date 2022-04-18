@@ -170,12 +170,12 @@ def create_db(division, s_id, s_round):
         homedb['Place'], homedb['Venue'] = place, venue
         homedb['Team'], homedb['Op.Team'] = hometeam, awayteam
         homedb['Director'], homedb['Coach'] = homedirector, homecoach
-        homedb['Win Set'], homedb['Lose Set'], homedb['Total Set'] = homeset, awayset, totalset
-        homedb['Win Lose'], homedb['Get Point'], homedb['Lose Point'] = homewinlose, homepoint, awaypoint
-        homedb['Game Time'], homedb['Start Time'], homedb['End Time'] = gametime, starttime, endtime
+        homedb['Win_Set'], homedb['Lose_Set'], homedb['Total_Set'] = homeset, awayset, totalset
+        homedb['Win_Lose'], homedb['Get_Point'], homedb['Lose_Point'] = homewinlose, homepoint, awaypoint
+        homedb['Game_Time'], homedb['Start_Time'], homedb['End_Time'] = gametime, starttime, endtime
         homedb['Spectators'] = spectators
-        homedb['Jury'], homedb['Chief Umpire'], homedb['Sub Umpire'], homedb['Judgeman'] = jury, chiefumpire, subumpire, judgeman
-        homedb['Home Away'] = 'Home'
+        homedb['Jury'], homedb['Chief_Umpire'], homedb['Sub_Umpire'], homedb['Judgeman'] = jury, chiefumpire, subumpire, judgeman
+        homedb['Home_Away'] = 'Home'
         hometeamdb = homedb.iloc[-1, 9:]
         homedb = homedb.iloc[:-1, :]
         awaydb = away.copy()
@@ -185,12 +185,12 @@ def create_db(division, s_id, s_round):
         awaydb['Place'], awaydb['Venue'] = place, venue
         awaydb['Team'], awaydb['Op.Team'] = awayteam, hometeam
         awaydb['Director'], awaydb['Coach'] = awaydirector, awaycoach
-        awaydb['Win Set'], awaydb['Lose Set'], awaydb['Total Set'] = awayset, homeset, totalset
-        awaydb['Win Lose'], awaydb['Get Point'], awaydb['Lose Point'] = awaywinlose, awaypoint, homepoint
-        awaydb['Game Time'], awaydb['Start Time'], awaydb['End Time'] = gametime, starttime, endtime
+        awaydb['Win_Set'], awaydb['Lose_Set'], awaydb['Total_Set'] = awayset, homeset, totalset
+        awaydb['Win_Lose'], awaydb['Get_Point'], awaydb['Lose_Point'] = awaywinlose, awaypoint, homepoint
+        awaydb['Game_Time'], awaydb['Start_Time'], awaydb['End_Time'] = gametime, starttime, endtime
         awaydb['Spectators'] = spectators
-        awaydb['Jury'], awaydb['Chief Umpire'], awaydb['Sub Umpire'], awaydb['Judgeman'] = jury, chiefumpire, subumpire, judgeman
-        awaydb['Home Away'] = 'Away'
+        awaydb['Jury'], awaydb['Chief_Umpire'], awaydb['Sub_Umpire'], awaydb['Judgeman'] = jury, chiefumpire, subumpire, judgeman
+        awaydb['Home_Away'] = 'Away'
         awayteamdb = awaydb.iloc[-1, 9:]
         awaydb = awaydb.iloc[:-1, :]
         # awaydb.tail()
