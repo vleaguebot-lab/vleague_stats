@@ -251,23 +251,23 @@ def create_db(division, s_id, s_round):
 #     '2004-05_regular': '105', '2003-04_regular': '103', '2002-03_regular': '101', '2001-02_regular': '99', '2000-01_regular': '98', '2000-00_regular': '95',
 # }
 
-division = 'v2_m'
-id_dict = {
-    '2016-17_regular': '228', '2015-16_regular': '204', '2014-15_regular': '186', '2013-14_regular': '173', '2012-13_regular': '160', '2011-12_regular': '133',
-    '2010-11_regular': '75', '2009-10_regular': '41', '2008-09_regular': '36', '2007-08_regular': '34', '2006-07_regular': '32',
-}
+# division = 'v2_m'
+# id_dict = {
+#     '2016-17_regular': '228', '2015-16_regular': '204', '2014-15_regular': '186', '2013-14_regular': '173', '2012-13_regular': '160', '2011-12_regular': '133',
+#     '2010-11_regular': '75', '2009-10_regular': '41', '2008-09_regular': '36', '2007-08_regular': '34', '2006-07_regular': '32',
+# }
 
 # division = 'v3_m'
 # id_dict = {
 #     '2016-17_regular': '230', '2015-16_regular': '193',
 # }
 
-# division = 'v1_w'
-# id_dict = {
-#     '2016-17_regular': '221', '2015-16_regular': '213', '2014-15_regular': '179', '2013-14_regular': '168', '2012-13_regular': '154', '2011-12_regular': '126',
-#     '2010-11_regular': '77', '2009-10_regular': '25', '2008-09_regular': '20', '2007-08_regular': '15', '2006-07_regular': '9', '2005-06_regular': '1',
-#     '2004-05_regular': '94', '2003-04_regular': '91', '2002-03_regular': '90', '2001-02_regular': '87', '2000-01_regular': '85', '1999-00_regular': '84',
-# }
+division = 'v1_w'
+id_dict = {
+    '2016-17_regular': '221', '2015-16_regular': '213', '2014-15_regular': '179', '2013-14_regular': '168', '2012-13_regular': '154', '2011-12_regular': '126',
+    '2010-11_regular': '77', '2009-10_regular': '25', '2008-09_regular': '20', '2007-08_regular': '15', '2006-07_regular': '9', '2005-06_regular': '1',
+    '2004-05_regular': '94', '2003-04_regular': '91', '2002-03_regular': '90', '2001-02_regular': '87', '2000-01_regular': '85', '1999-00_regular': '84',
+}
 
 # division = 'v2_w'
 # id_dict = {
