@@ -231,12 +231,12 @@ division = input('Select division: ')
 # s_round = '2021-22_regular'
 # s_id_dict = {'v1_m': '318', 'v2_m': '320',
 #              'v3_m': '321', 'v1_w': '317', 'v2_w': '319'}
-s_round = '2020-21_regular'
-s_id_dict = {'v1_m': '301', 'v2_m': '299',
-             'v3_m': '300', 'v1_w': '303', 'v2_w': '302'}
-# s_round = '2019-20_regular'
-# s_id_dict = {'v1_m': '283', 'v2_m': '288',
-#              'v3_m': '287', 'v1_w': '277', 'v2_w': '281'}
+# s_round = '2020-21_regular'
+# s_id_dict = {'v1_m': '301', 'v2_m': '299',
+#              'v3_m': '300', 'v1_w': '303', 'v2_w': '302'}
+s_round = '2019-20_regular'
+s_id_dict = {'v1_m': '283', 'v2_m': '288',
+             'v3_m': '287', 'v1_w': '277', 'v2_w': '281'}
 # s_round = '2018-19_regular'
 # s_id_dict = {'v1_m': '258', 'v2_m': '266',
 #              'v3_m': '267', 'v1_w': '269', 'v2_w': '264'}
