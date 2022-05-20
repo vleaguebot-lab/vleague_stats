@@ -1,0 +1,33 @@
+                     Logit Regression Results                     
+Dep. Variable:  ,Win             ,  No. Observations:  ,  1396    
+Model:          ,Logit           ,  Df Residuals:      ,  1376    
+Method:         ,MLE             ,  Df Model:          ,    19    
+Date:           ,Tue, 17 May 2022,  Pseudo R-squ.:     ,0.7651    
+Time:           ,17:50:10        ,  Log-Likelihood:    , -227.27  
+converged:      ,True            ,  LL-Null:           , -967.63  
+Covariance Type:,nonrobust       ,  LLR p-value:       ,6.088e-303
+       ,   coef   , std err ,    z    ,P>|z| ,  [0.025 ,  0.975] 
+AA     ,    4.5284,    1.629,    2.780, 0.005,    1.336,    7.721
+AP     ,    0.2405,    1.645,    0.146, 0.884,   -2.984,    3.465
+AE     ,   -0.2337,    0.166,   -1.405, 0.160,   -0.560,    0.092
+ASucc% ,    2.8588,    1.203,    2.376, 0.017,    0.501,    5.217
+AP/S   ,   -0.3367,    0.344,   -0.978, 0.328,   -1.011,    0.338
+BAA    ,    0.5347,    0.703,    0.761, 0.447,   -0.843,    1.912
+BAP    ,   -0.6976,    0.818,   -0.853, 0.394,   -2.300,    0.905
+BAE    ,   -0.1186,    0.160,   -0.742, 0.458,   -0.432,    0.195
+BASucc%,    0.4770,    0.547,    0.872, 0.383,   -0.596,    1.550
+BP     ,   -0.1025,    0.831,   -0.123, 0.902,   -1.731,    1.526
+BP/S   ,    1.7086,    0.894,    1.911, 0.056,   -0.044,    3.461
+SVA    ,    1.2028,    0.571,    2.108, 0.035,    0.084,    2.321
+SVP    ,   -0.2427,    0.795,   -0.305, 0.760,   -1.802,    1.316
+SVE    ,    0.5658,    0.399,    1.416, 0.157,   -0.217,    1.349
+SVx    ,   -0.3764,    0.626,   -0.601, 0.548,   -1.604,    0.851
+SVEff% ,    1.6864,    1.201,    1.405, 0.160,   -0.667,    4.040
+RA     ,   -5.2194,    1.267,   -4.120, 0.000,   -7.702,   -2.737
+Rx     ,   -0.5826,    1.320,   -0.442, 0.659,   -3.169,    2.004
+Rg     ,   -0.1736,    0.492,   -0.353, 0.724,   -1.137,    0.790
+RSucc% ,    0.7796,    0.959,    0.813, 0.416,   -1.100,    2.659
+
+Possibly complete quasi-separation: A fraction 0.12 of observations can be
+perfectly predicted. This might indicate that there is complete
+quasi-separation. In this case some parameters will not be identified.
